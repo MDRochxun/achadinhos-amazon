@@ -1,72 +1,191 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ofertas & Achadinhos</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risadas & Ofertas - Achadinhos Amazon</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            color: #232f3e;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            background-color: #232f3e;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: #ff9900;
+            color: #111;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-info h2 {
+            font-size: 1.1rem;
+            color: #111;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #B12704;
+            font-weight: bold;
+        }
+
+        .buy-btn {
+            background-color: #ffa41c;
+            color: #111;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .buy-btn:hover {
+            background-color: #cc8400;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Achadinhos Amazon 📦</h1>
-    <button id="info-btn" title="Aviso de Afiliado">ℹ️</button>
-  </header>
+    <header>
+        <h1>Risadas & Ofertas 📦🤣</h1>
+        <p>Os melhores achadinhos e promoções da Amazon!</p>
+    </header>
 
-  <main id="app-content">
-
-    <section class="card banner-section">
-      <h2>🔥 Melhores Ofertas do Dia</h2>
-      <p>Seleção diária dos produtos mais vendidos e com desconto na Amazon.</p>
-    </section>
-
-    <section class="feed">
-      
-      <article class="card item-card">
-        <div class="product-badge">Destaque</div>
-        <div class="card-body">
-          <h3>Achadinho Imperdível 1</h3>
-          <p>Confira os detalhes e o desconto exclusivo diretamente na loja oficial.</p>
-          <a href="https://amzn.to/exemplo1" target="_blank" rel="noopener" class="btn-amazon">
-            🛒 Ver Oferta na Amazon
-          </a>
-        </div>
-      </article>
-
-      <article class="card item-card">
-        <div class="product-badge">Promoção</div>
-        <div class="card-body">
-          <h3>Achadinho Imperdível 2</h3>
-          <p>Produto com excelente avaliação e envio rápido disponível.</p>
-          <a href="https://amzn.to/exemplo2" target="_blank" rel="noopener" class="btn-amazon">
-            🛒 Ver Oferta na Amazon
-          </a>
-        </div>
-      </article>
-
-    </section>
-
-    <section class="card aviso-amazon">
-      <h3>📢 Declaração de Afiliado</h3>
-      <p>
-        Como associado da Amazon, este aplicativo pode receber comissões por compras qualificadas efetuadas através dos links disponibilizados.
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>@risadasgozadas</p>
-  </footer>
-
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Aviso Legal ℹ️</h3>
-      <p>Como associado da Amazon, posso receber comissões por compras qualificadas efetuadas através dos links deste aplicativo.</p>
-      <button id="close-modal">Entendi</button>
+    <div class="categories">
+        <button class="category-btn active" onclick="filterCategory('all')">Todos</button>
+        <button class="category-btn" onclick="filterCategory('hqs')">HQs & Mangás 📚</button>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <div class="container" id="product-list">
+        
+        <div class="card" data-category="hqs">
+            <div class="card-info">
+                <h2>Spawn: Origens Vol. 01</h2>
+                <div class="price">R$ 10,15</div>
+            </div>
+            <a href="https://link.amazon/B00kPSyXU" target="_blank" rel="noopener noreferrer" class="buy-btn">Ver na Amazon</a>
+        </div>
+
+        <div class="card" data-category="hqs">
+            <div class="card-info">
+                <h2>Record of Ragnarok: Volume 07</h2>
+                <div class="price">R$ 12,54</div>
+            </div>
+            <a href="https://link.amazon/B02nXpIho" target="_blank" rel="noopener noreferrer" class="buy-btn">Ver na Amazon</a>
+        </div>
+
+        <div class="card" data-category="hqs">
+            <div class="card-info">
+                <h2>Invencível Vol. 01</h2>
+                <div class="price">R$ 14,15</div>
+            </div>
+            <a href="https://link.amazon/B0b3hWjpg" target="_blank" rel="noopener noreferrer" class="buy-btn">Ver na Amazon</a>
+        </div>
+
+        <div class="card" data-category="hqs">
+            <div class="card-info">
+                <h2>Os Fabulosos X-Men (2025) 01</h2>
+                <div class="price">R$ 10,64</div>
+            </div>
+            <a href="https://link.amazon/B002nSEtw" target="_blank" rel="noopener noreferrer" class="buy-btn">Ver na Amazon</a>
+        </div>
+
+        <div class="card" data-category="hqs">
+            <div class="card-info">
+                <h2>Reino do Amanhã (DC Pocket)</h2>
+                <div class="price">R$ 28,00</div>
+            </div>
+            <a href="https://link.amazon/B01Ksa9RO" target="_blank" rel="noopener noreferrer" class="buy-btn">Ver na Amazon</a>
+        </div>
+
+        <div class="card" data-category="hqs">
+            <div class="card-info">
+                <h2>Demolidor: Amarelo (Marvel Essenciais)</h2>
+                <div class="price">R$ 58,82</div>
+            </div>
+            <a href="https://link.amazon/B0b0GEGK5" target="_blank" rel="noopener noreferrer" class="buy-btn">Ver na Amazon</a>
+        </div>
+
+    </div>
+
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.category-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
